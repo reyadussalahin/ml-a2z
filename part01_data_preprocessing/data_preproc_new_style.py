@@ -88,7 +88,6 @@ preprocess_X.fit(X_train) # fitting the model using X_train
 # so, preprocess_X will also be used to transform X_test values
 X_train = preprocess_X.transform(X_train) # changing X_train values
 
-
 preprocess_y = make_column_transformer(
         (OrdinalEncoder(), [0]), # changing 'Purchased' column to
         # numerical values
@@ -97,6 +96,16 @@ preprocess_y = make_column_transformer(
 preprocess_y.fit(y_train) # fitting the model using y_train
 # so, we will use to transform both y_train and y_test(later)
 y_train = preprocess_y.transform(y_train)
+
+
+# processing test data before feeding to model
+X_test = preprocess_X.transform(X_test)
+y_test = preprocess_y.transform(y_test)
+
+# now you can feed the model X_test
+# ...
+# ... do what you need to do
+# ...
 
 # and so, we're done
 # =============================================================================
