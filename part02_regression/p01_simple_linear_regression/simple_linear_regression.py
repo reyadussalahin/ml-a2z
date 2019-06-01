@@ -15,7 +15,8 @@ else:
 import pandas as pd
 import matplotlib.pyplot as plt
 
-DATA_PATH = PROJECT_ROOT + 'part02_regression/p01_simple_linear_regression/data/Salary_Data.csv'
+DATA_PATH = PROJECT_ROOT + \
+            'part02_regression/p01_simple_linear_regression/data/Salary_Data.csv'
 
 dataset = pd.read_csv(DATA_PATH)
 X = dataset.iloc[:, :-1]
