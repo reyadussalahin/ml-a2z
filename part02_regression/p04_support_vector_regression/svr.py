@@ -61,3 +61,5 @@ plt.title('Support Vector Regression(blue)')
 plt.xlabel('Position label')
 plt.ylabel('Salary')
 plt.show()
+
+# for higher resolution use X_grid
