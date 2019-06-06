@@ -28,10 +28,11 @@ lreg.fit(X, y)
 
 from sklearn.preprocessing import PolynomialFeatures
 pf = PolynomialFeatures(degree=4)
-X_poly = pf.fit_transform(X)
+# X_poly = pf.fit_transform(X)
 
 lreg2 = LinearRegression()
-lreg2.fit(X_poly, y)
+# lreg2.fit(X_poly, y)
+lreg2.fit(pf.fit_transform(X), y)
 
 
 # linear regression prediction graph
