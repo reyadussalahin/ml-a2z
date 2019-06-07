@@ -16,7 +16,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 DATA_PATH = PROJECT_ROOT + \
-            'part03_classification/p06_decision_tree_classification/data/Social_Network_Ads.csv'
+            'part03_classification/p07_random_forest_classification/data/Social_Network_Ads.csv'
 
 dataset = pd.read_csv(DATA_PATH)
 X = dataset.iloc[:, [2, 3]]
@@ -32,7 +32,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.compose import make_column_transformer
 preprocess_X = make_column_transformer(
         (StandardScaler(), [0, 1]),
-        remainder='passthrough'        
+        remainder='passthrough'
 )
 preprocess_X.fit(X_train)
 X_train = preprocess_X.transform(X_train)
@@ -40,8 +40,8 @@ X_test = preprocess_X.transform(X_test)
 
 
 # building model
-from sklearn.tree import DecisionTreeClassifier
-classifier = DecisionTreeClassifier(criterion='entropy', random_state=0)
+from sklearn.ensemble import RandomForestClassifier
+classifier = RandomForestClassifier(n_estimators=300, criterion='entropy', random_state=0)
 classifier.fit(X_train, y_train)
 
 # predicting result
@@ -74,7 +74,7 @@ for i, j in enumerate(np.unique(y_set)):
             c = ListedColormap(('red', 'green'))(i),
             label=j
     )
-plt.title('Decision Tree(Training Set)')
+plt.title('Random Forest Classification(Training Set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
@@ -104,7 +104,7 @@ for i, j in enumerate(np.unique(y_set)):
             c = ListedColormap(('red', 'green'))(i),
             label=j
     )
-plt.title('Decision Tree(Test Set)')
+plt.title('Random Forest Classification(Test Set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
