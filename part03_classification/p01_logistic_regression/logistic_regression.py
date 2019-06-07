@@ -76,7 +76,7 @@ for i, j in enumerate(np.unique(y_set)):
             c = ListedColormap(('red', 'green'))(i),
             label=j
     )
-plt.title('KNN(Training Set)')
+plt.title('Logistic Regression(Training Set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
@@ -106,7 +106,7 @@ for i, j in enumerate(np.unique(y_set)):
             c = ListedColormap(('red', 'green'))(i),
             label=j
     )
-plt.title('KNN(Training Set)')
+plt.title('Logistic Regression(Test Set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()

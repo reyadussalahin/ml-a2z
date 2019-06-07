@@ -104,7 +104,7 @@ for i, j in enumerate(np.unique(y_set)):
             c = ListedColormap(('red', 'green'))(i),
             label=j
     )
-plt.title('KNN(Training Set)')
+plt.title('KNN(Test Set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()

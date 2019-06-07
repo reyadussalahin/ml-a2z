@@ -16,7 +16,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 DATA_PATH = PROJECT_ROOT + \
-            'part03_classification/p03_support_vector_machine/data/Social_Network_Ads.csv'
+            'part03_classification/p04_kernel_svm/data/Social_Network_Ads.csv'
 
 dataset = pd.read_csv(DATA_PATH)
 X = dataset.iloc[:, [2, 3]]
@@ -41,7 +41,7 @@ X_test = preprocess_X.transform(X_test)
 
 # building model
 from sklearn.svm import SVC
-classifier = SVC(kernel='linear', random_state=0)
+classifier = SVC(kernel='rbf', random_state=0)
 classifier.fit(X_train, y_train)
 
 # predicting result
@@ -74,7 +74,7 @@ for i, j in enumerate(np.unique(y_set)):
             c = ListedColormap(('red', 'green'))(i),
             label=j
     )
-plt.title('SVM(Training Set)')
+plt.title('Kernel SVM(Training Set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
@@ -104,7 +104,7 @@ for i, j in enumerate(np.unique(y_set)):
             c = ListedColormap(('red', 'green'))(i),
             label=j
     )
-plt.title('SVM(Test Set)')
+plt.title('Kernel SVM(Test Set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
