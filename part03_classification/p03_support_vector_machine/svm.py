@@ -16,12 +16,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 DATA_PATH = PROJECT_ROOT + \
-            'part03_classification/p01_logistic_regression/data/Social_Network_Ads.csv'
+            'part03_classification/p03_support_vector_machine/data/Social_Network_Ads.csv'
 
 dataset = pd.read_csv(DATA_PATH)
-X = dataset.iloc[:, [2, 3]].values
-y = dataset.iloc[:, 4].values
-
+X = dataset.iloc[:, [2, 3]]
+y = dataset.iloc[:, 4]
 
 # train test split
 from sklearn.model_selection import train_test_split
@@ -41,12 +40,11 @@ X_test = preprocess_X.transform(X_test)
 
 
 # building model
-from sklearn.linear_model import LogisticRegression
-classifier = LogisticRegression(random_state=0, solver='lbfgs')
+from sklearn.svm import SVC
+classifier = SVC(kernel='linear', random_state=0)
 classifier.fit(X_train, y_train)
 
-
-# predicting value
+# predicting result
 y_pred = classifier.predict(X_test)
 
 # confusion matrix
