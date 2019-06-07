@@ -19,11 +19,18 @@ DATA_PATH = PROJECT_ROOT + \
             'part02_regression/p06_random_forest_regression/data/Position_Salaries.csv'
 
 dataset = pd.read_csv(DATA_PATH)
-X = dataset.iloc[:, 1].values
+# X = dataset.iloc[:, 1].values
+X = dataset.iloc[:, [1]].values
 y = dataset.iloc[:, 2].values
 
-X = X.reshape((len(X), 1))
-y = y.reshape((len(y), 1))
+# X = X.reshape((len(X), 1)) # i've to do it because 'X' is one dimensional array
+# but two dimensional array is expected
+# [N. B.]: "X = dataset.iloc[:, [1]].values" solved the problem
+# we don't need to use X.reshape anymore
+# rather we would get a two dimensional array directly using the line described above
+# y = y.reshape((len(y), 1)) # we dont't have to do it for 'y'
+# cause 'y' is expected as one dimensional array in DecisionTree or RandomForest
+# two dimensional 'y' would rather show warning or error
 
 from sklearn.ensemble import RandomForestRegressor
 regressor = RandomForestRegressor(n_estimators=300, random_state=0)
